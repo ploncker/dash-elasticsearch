@@ -41,7 +41,7 @@ app.layout = dbc.Container(
         dbc.Row(
             [
                 html.Br(),
-                html.Div([ html.P(children=[html.B("DeepSearch"), " is here"])], style={'font-family': 'Pacifico, cursive', 'font-size':'64'} ),
+                html.Div([ html.P(children=[html.B("Elastic")])], style={'font-family': 'Pacifico, cursive', 'font-size':'64'} ),
                 html.Br()
             ], justify="center"
         ),
