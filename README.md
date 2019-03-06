@@ -48,7 +48,7 @@ python scrape.py
 Then we start the Dash App by running the app file eg
 python elasticUI_dash.py
 
-
+![Alt text](demo.png?raw=true "Optional Title")
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
