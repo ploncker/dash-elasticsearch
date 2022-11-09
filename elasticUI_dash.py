@@ -7,7 +7,8 @@ Created on Tue Feb 26 20:06:20 2019
 """
 import dash
 #import dash_core_components as dcc
-import dash_html_components as html
+# import dash_html_components as html
+from dash import html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 from elasticsearch import Elasticsearch
@@ -16,6 +17,7 @@ import numpy as np
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 es = Elasticsearch('127.0.0.1', port=9200)
+
 
 #input_group = dcc.Input(
 #    id='input-1-submit',
@@ -100,16 +102,16 @@ def generate_table(dataframe, search_term):
 def update_output(ns1,input1):
     search_term = input1
     res = es.search(
-        index="blog-sysadmins", 
+        index="cma_cgm", 
         size=20, 
         body={
             "query": {
                 "multi_match" : {
                     "query": search_term, 
                     "fields": [
-                        "url", 
-                        "title", 
-                        "tags"
+                        "ec_intitule", 
+                        "ec_date", 
+                        "OtherRef"
                     ] 
                 }
             }
