@@ -102,16 +102,16 @@ def generate_table(dataframe, search_term):
 def update_output(ns1,input1):
     search_term = input1
     res = es.search(
-        index="cma_cgm", 
+        index="blog-sysadmins", 
         size=20, 
         body={
             "query": {
                 "multi_match" : {
                     "query": search_term, 
                     "fields": [
-                        "ec_intitule", 
-                        "ec_date", 
-                        "OtherRef"
+                        "url", 
+                        "title", 
+                        "tags"
                     ] 
                 }
             }
