@@ -63,17 +63,6 @@ app.layout = dbc.Container(
     fluid=True,
 )
         
-
-def text_style(text,search_term):
-    if search_term in text:
-        words = text.split(search_term)
-    return html.Div([
-             words[0],
-             html.Mark(search_term, style={'color': 'red'}),
-             words[1]
-        ])
-
-
            
 def text_style(text,search_term):
     if 'AND' or 'OR' in search_term:
