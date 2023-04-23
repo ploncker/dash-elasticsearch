@@ -13,6 +13,7 @@ from dash.dependencies import Input, Output, State
 from elasticsearch import Elasticsearch
 from pandas.io.json import json_normalize
 import numpy as np
+import re
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 es = Elasticsearch('127.0.0.1', port=9200)
@@ -72,6 +73,38 @@ def text_style(text,search_term):
              words[1]
         ])
 
+
+           
+def text_style(text,search_term):
+    if 'AND' or 'OR' in search_term:
+        search_terms = re.split('AND | OR', search_term)
+        search_terms = [x.strip() for x in search_terms]
+        sequence = text.split()
+        sequence = [html.Mark(word, style={'color': 'red'}) if word in search_terms else word for word in sequence ]
+
+                    
+    else:
+        #search_term in text:
+        sequence = text.split(search_term)
+        i = 1
+        while i < len(sequence):
+            sequence.insert(i, html.Mark(search_term, style={'color': 'red'}))
+            i += 2
+    
+    return html.Div([
+             sequence
+        ])
+
+
+def text_style(text,search_term):
+    if 'AND' or 'OR' in search_term:
+        search_terms = re.split('AND | OR', search_term)
+        sequence = text.split()
+        for term in search_terms:
+            for i, word in enumerate(sequence):
+                if term==word:
+                    sequence[i] = html.Mark(term, style={'color': 'red'})
+                    
 def generate_table(dataframe, search_term):
     rows = []
     for i in np.arange(dataframe.shape[0]):
