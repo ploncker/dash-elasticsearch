@@ -20,4 +20,5 @@ six==1.16.0
 tenacity==8.1.0
 urllib3==1.26.12
 Werkzeug==2.2.2
-re=2.2.1
+re==2.2.1
+requests-ntlm
